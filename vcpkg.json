@@ -1,5 +1,7 @@
 {
-    "name": "project-systems-programming",
+    "name": "engine-prototype",
     "version": "0.1.0",
-    "dependencies": []
+    "dependencies": [
+        "sdl3"
+    ]
 }

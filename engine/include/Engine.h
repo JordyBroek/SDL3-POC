@@ -1,23 +1,34 @@
 #pragma once
 
+#include "AudioPlayer.h"
+#include "IRenderer.h"
+#include "Window.h"
+
+#include <memory>
+
 namespace engine
 {
-class Engine
-{
-public:
-    Engine();
-    ~Engine();
+    class Engine
+    {
+    public:
+        Engine() = default;
+        ~Engine() = default;
 
-    Engine(const Engine&) = delete;
-    auto operator=(const Engine&) -> Engine& = delete;
-    Engine(Engine&&) noexcept = default;
-    auto operator=(Engine&&) noexcept -> Engine& = default;
+        auto init() -> bool;
+        [[nodiscard]] auto isRunning() const -> bool;
+        auto update() -> void;
+        auto shutdown() -> void;
 
-    void init();
-    void shutdown();
-    [[nodiscard]] bool isRunning() const;
+    private:
+        auto handleEvents() -> void;
+        auto render() -> void;
 
-private:
-    bool running{false};
-};
+        std::unique_ptr<Window> window;
+        std::unique_ptr<IRenderer> renderer;
+        std::unique_ptr<AudioPlayer> audioPlayer;
+
+        // Naam bewust "running" (niet "isRunning") om botsing met de
+        // publieke methode isRunning() te vermijden.
+        bool running = false;
+    };
 } // namespace engine

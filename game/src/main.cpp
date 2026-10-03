@@ -1,19 +1,22 @@
 #include "Engine.h"
 
 #include <cstdlib>
-#include <iostream>
 
 auto main() -> int
 {
     engine::Engine gameEngine;
-    gameEngine.init();
+
+    if (!gameEngine.init())
+    {
+        return EXIT_FAILURE;
+    }
 
     while (gameEngine.isRunning())
     {
-        // Game loop placeholder
-        std::cout << "Engine is running\n";
-        gameEngine.shutdown();
+        gameEngine.update();
     }
+
+    gameEngine.shutdown();
 
     return EXIT_SUCCESS;
 }
