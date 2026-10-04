@@ -6,6 +6,7 @@ add_library(engine STATIC
         src/core/Engine.cpp
         src/graphics/SDL3Renderer.cpp
         src/graphics/Window.cpp
+        src/audio/AudioPlayer.cpp
 )
 
 target_include_directories(engine PUBLIC
