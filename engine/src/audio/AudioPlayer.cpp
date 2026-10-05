@@ -1,5 +1,4 @@
 #include "AudioPlayer.h"
-
 #include <SDL3/SDL.h>
 #include <iostream>
 

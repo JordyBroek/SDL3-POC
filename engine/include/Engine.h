@@ -3,7 +3,6 @@
 #include "AudioPlayer.h"
 #include "IRenderer.h"
 #include "Window.h"
-
 #include <memory>
 
 namespace engine
