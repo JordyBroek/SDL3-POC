@@ -12,15 +12,14 @@ SDL3Renderer::~SDL3Renderer()
 
 auto SDL3Renderer::init(Window& window) -> bool
 {
-    // SDL3's SDL_CreateRenderer no longer takes a driver-index argument
-    // like SDL2 did; nullptr lets SDL pick the best available backend.
+    // SDL3's SDL_CreateRenderer no longer takes a driver-index argument like SDL2 did.
+    // nullptr lets SDL pick the best available backend.
     handle = SDL_CreateRenderer(window.getHandle(), nullptr);
     if (handle == nullptr)
     {
         std::cerr << "SDL_CreateRenderer failed: " << SDL_GetError() << '\n';
         return false;
     }
-
     return true;
 }
 
